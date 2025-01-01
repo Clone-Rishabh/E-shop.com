@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="e-shop_logo.png" width="150px" height="50px"/>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products...">
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+
+            <!-- Cart and Wishlist -->
+            <div class="cart-wishlist-buttons">
+                <a href="#" class="cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+                <a href="#" class="wishlist-btn"><i class="fa-regular fa-heart"></i>
+
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full-Width Navigation Menu -->
+    <nav class="main-menu">
+        <ul class="menu-left">
+            <!-- Menu Icon for Categories -->
+            <li class="menu-icon">
+                <span>☰ Categories</span>
+                <div class="side-menu">
+                    <ul class="categories-list">
+                        <li class="dropdown-submenu">
+                            <span>Dress</span>
+                            <ul>
+                                <li>Shirts</li>
+                                <li>T-shirts</li>
+                                <li>Jeans</li>
+                                <li>Trousers</li>
+                                <li>Suits</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <span>Electronics</span>
+                            <ul>
+                                <li>Mobile</li>
+                                <li>Laptop</li>
+                                <li>PC</li>
+                                <li>Charger</li>
+                                <li>Refrigerator</li>
+                                <li>Washing machine</li>
+                                <li>Fans</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <span>Sports</span>
+                            <ul>
+                                <li>Cricket bat</li>
+                                <li>Bowl</li>
+                                <li>Football</li>
+                                <li>Sports wear</li>
+                                <li>Gym Equipment</li>
+                                <li>Cycling</li>
+                                <li>Basketball</li>
+                                <li>Volleyball</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <span>Entertainment</span>
+                            <ul>
+                                <li>Games</li>
+                                <li>Movies</li>
+                                <li>OTG platform</li>
+                                <li>Netflix</li>
+                                <li>Amazon Prime</li>
+                                <li>ZEE</li>
+                                <li>Sony Liv</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <span>Footwear</span>
+                            <ul>
+                                <li>Boot</li>
+                                <li>Shoes</li>
+                                <li>Socks</li>
+                                <li>Sneakers</li>
+                                <li>Formal Shoes</li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Gift</a></li>
+            <li class="dropdown">
+                <a href="#">Order Details</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">Checkout</a></li>
+                    <li><a href="#">Track</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="menu-right">
+    <li class="dropdown login-dropdown">
+        <a href="#">Login</a>
+        <div class="dropdown-content login-form">
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter password">
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
+    </li>
+    <li><a href="#">Sign Up</a></li>
+</ul>
+
+    </nav>
+
+    <!-- Banner Section -->
+<div class="banner-slideshow">
+    <div class="banner-slide active"> <!-- Slide 1 -->
+        <video id="bannerVideo" autoplay muted loop>
+
+            <source src="E-Shop_BannerVedio.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay">
+            <h2 class="video-title">The Autumn Edit</h2>
+            <p class="video-description">Shop new season styles for crisp Autumn days</p>
+            <a href="#" class="shop-button">Shop</a>
+    </div>
+        
+    </div>
+    <div class="banner-slide"> <!-- Slide 2 -->
+        <img src="E-shop_banner2.png" alt="Banner 2">
+    </div>
+    <div class="banner-slide"> <!-- Slide 3 -->
+        <img src="E-shop_banner1.webp" alt="Banner 1">
+        <div class="welcome-overlay">
+            <h2 class="welcome-title">Welcome to Our Website!</h2>
+            <p class="welcome-description">Explore our exclusive collections and shop now!</p>
+            <a href="#" class="shop-button">Shop Now</a>
+        </div>
+
+        
+    </div>
+    <!-- Navigation controls -->
+    <button id="prevSlide" class="nav-button">❮</button>
+    <button id="nextSlide" class="nav-button">❯</button>
+</div>
+
+
+<!-- JS -->
+
+<script>
+    let currentSlideIndex = 0;
+const slides = document.querySelectorAll('.banner-slide');
+const totalSlides = slides.length;
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+    currentSlideIndex = index;
+}
+
+// Show the previous slide
+document.getElementById('prevSlide').addEventListener('click', () => {
+    const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+    showSlide(prevIndex);
+});
+
+// Show the next slide
+document.getElementById('nextSlide').addEventListener('click', () => {
+    const nextIndex = (currentSlideIndex + 1) % totalSlides;
+    showSlide(nextIndex);
+});
+
+// Change slide on hover over navigation buttons
+document.getElementById('prevSlide').addEventListener('mouseenter', () => {
+    const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+    showSlide(prevIndex);
+});
+
+document.getElementById('nextSlide').addEventListener('mouseenter', () => {
+    const nextIndex = (currentSlideIndex + 1) % totalSlides;
+    showSlide(nextIndex);
+});
+
+// Initial display of the first slide
+showSlide(currentSlideIndex);
+
+</script>
+
+<!-- Benefits Section -->
+<section class="benefits-section">
+    <div class="benefit">
+        <i class="fa-solid fa-list-check"></i>
+        <h3>Quality Product</h3>
+        <p>We offer only the best quality products for our customers.</p>
+    </div>
+    <div class="benefit">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h3>Free Shipping</h3>
+        <p>Enjoy free shipping on orders over $50.</p>
+    </div>
+    <div class="benefit">
+        <i class="fa-solid fa-right-left"></i>
+        <h3>14 Days Return</h3>
+        <p>Easy returns within 14 days of purchase.</p>
+    </div>
+    <div class="benefit">
+        <i class="fa-solid fa-headset"></i>
+        <h3>24/7 Support</h3>
+        <p>We're here to help you 24/7.</p>
+    </div>
+</section>
+
+
+
+<!-- Promotional Section -->
+<section class="promotional-section">
+    <h2>Discover Our Latest Collection!</h2>
+    <p>Explore the trendiest styles and make a statement this season. Our carefully curated collection is designed for comfort and flair, ensuring you stand out wherever you go.</p>
+    <p>Don't miss out on our exclusive offers! Shop now to find your perfect outfit.</p>
+</section>
+
+<hr style="width:95%">
+
+
+<!-- Clothing Carousel Section -->
+<section class="clothing-carousel-section">
+    <div class="clothing-carousel">
+        <div class="clothing-category">
+            <img src="E-shop_TShirts.webp" alt="T-shirts">
+            <h3>T-Shirts</h3>
+            <div class="shop-links">
+                <a href="#">Shop Men's</a> | <a href="#">Shop Women's</a>
+            </div>
+        </div>
+        <div class="clothing-category">
+            <img src="E-shop_Hoodies.webp" alt="Hoodies">
+            <h3>Hoodies</h3>
+            <div class="shop-links">
+                <a href="#">Shop Men's</a> | <a href="#">Shop Women's</a>
+            </div>
+        </div>
+        <div class="clothing-category">
+            <img src="E-shop-Jeans.webp" alt="Jeans">
+            <h3>Jeans</h3>
+            <div class="shop-links">
+                <a href="#">Shop Men's</a> | <a href="#">Shop Women's</a>
+            </div>
+        </div>
+        <div class="clothing-category">
+            <img src="E-Shop-Fleeces.webp" alt="Fleeces">
+            <h3>Fleeces</h3>
+            <div class="shop-links">
+                <a href="#">Shop Men's</a> | <a href="#">Shop Women's</a>
+            </div>
+        </div>
+        <div class="clothing-category">
+            <img src="E-shop-Jackets.webp" alt="Coat & Jacket">
+            <h3>Coat & Jacket</h3>
+            <div class="shop-links">
+                <a href="#">Shop Men's</a> | <a href="#">Shop Women's</a>
+            </div>
+        </div>
+        <div class="clothing-category">
+            <img src="E-Shop-Beanies.webp" alt="Coat & Jacket">
+            <h3>Beanies</h3>
+            <div class="shop-links">
+                <a href="#">Shop Men's</a> | <a href="#">Shop Women's</a>
+            </div>
+        </div>
+        <div class="clothing-category">
+            <img src="E-shop-Jumpers.webp" alt="Coat & Jacket">
+            <h3>Jumpers</h3>
+            <div class="shop-links">
+                <a href="#">Shop Men's</a> | <a href="#">Shop Women's</a>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation controls for the clothing carousel -->
+    <button id="prevClothingSlide" class="nav-button">❮</button>
+    <button id="nextClothingSlide" class="nav-button">❯</button>
+</section>
+
+
+
+
+
+
+<!-- JS CODE FOR CATEGORIES SECTION AREA -->
+
+<script type="text/javascript">
+    
+   let currentClothingIndex = 0;
+let slidingForward = true; // This variable will track the sliding direction
+const clothingCategories = document.querySelectorAll('.clothing-category');
+const clothingCategoryCount = clothingCategories.length;
+
+function updateClothingCarousel() {
+    const carouselWidth = document.querySelector('.clothing-carousel-section').offsetWidth;
+    const itemWidth = clothingCategories[0].offsetWidth;
+    const maxVisibleItems = Math.floor(carouselWidth / itemWidth);
+
+    // Calculate the new position for sliding
+    const position = -currentClothingIndex * itemWidth;
+    document.querySelector('.clothing-carousel').style.transform = `translateX(${position}px)`;
+
+    // Handle boundary cases to ensure we don't scroll past the last visible item
+    if (currentClothingIndex >= clothingCategoryCount - maxVisibleItems) {
+        currentClothingIndex = clothingCategoryCount - maxVisibleItems;
+        slidingForward = false; // Change direction to reverse
+    } else if (currentClothingIndex <= 0) {
+        currentClothingIndex = 0;
+        slidingForward = true; // Change direction to forward
+    }
+}
+
+// Function to auto-slide the carousel
+function autoSlideCarousel() {
+    if (slidingForward) {
+        currentClothingIndex++;
+    } else {
+        currentClothingIndex--;
+    }
+    updateClothingCarousel();
+}
+
+// Set up auto-slide interval to change every 3 seconds
+let autoSlideInterval = setInterval(autoSlideCarousel, 3000);
+
+// Event listeners for the navigation buttons to manually slide
+document.getElementById('prevClothingSlide').addEventListener('click', () => {
+    clearInterval(autoSlideInterval); // Pause auto-slide on manual interaction
+    if (currentClothingIndex > 0) {
+        currentClothingIndex--;
+        slidingForward = false; // Set direction to reverse
+        updateClothingCarousel();
+    }
+    autoSlideInterval = setInterval(autoSlideCarousel, 3000); // Resume auto-slide
+});
+
+document.getElementById('nextClothingSlide').addEventListener('click', () => {
+    clearInterval(autoSlideInterval); // Pause auto-slide on manual interaction
+    const maxVisibleItems = Math.floor(
+        document.querySelector('.clothing-carousel-section').offsetWidth / clothingCategories[0].offsetWidth
+    );
+
+    if (currentClothingIndex < clothingCategoryCount - maxVisibleItems) {
+        currentClothingIndex++;
+        slidingForward = true; // Set direction to forward
+        updateClothingCarousel();
+    }
+    autoSlideInterval = setInterval(autoSlideCarousel, 3000); // Resume auto-slide
+});
+
+// Initialize the carousel on page load
+updateClothingCarousel();
+
+</script>
+
+
+<hr style="width:95%">
+
+<!--- Secondary Banner Section -->
+<div class="Secondary-Banner">
+    <div class="banner-img">
+        <img src="E-shop-SecondaryHero.webp" alt="banner img"/>
+        <div class="Offer-overlay">
+            <h2 class="offer-title">Special Offer!</h2>
+            <p>50% off for first time*</p>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Collection Header Section -->
+<section class="collection-header-section">
+    <h2 class="collection-header-title">Trendy Collections</h2>
+    <hr width="50%" style="border:1px solid #702449;"/>
+</section>
+
+<!--- Products Section -->
+
+<div class="products-section">
+
+    <!-- Women's Section -->
+    <div class="women-products">
+        <div class="video-section">
+            <video autoplay muted loop class="product-video">
+                <source src="E-shop-WomenSection.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="Item1.webp" alt="Product 1" class="product-image main-img">
+                    <img src="Item_1.webp" alt="Product 1 Hover" class="product-image hover-img">
+                    <span class="quick-buy">Quick Buy</span>
+                    <i class="wishlist-icon far fa-heart"></i>
+                </div>
+                <h4 class="product-name">Women's Product 1</h4>
+                <p class="product-description">Brief description of the product.</p>
+                <p class="product-price">$49.99</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="item2.webp" alt="Product 2" class="product-image main-img">
+                    <img src="item_2.jpg" alt="Product 2 Hover" class="product-image hover-img">
+                    <span class="quick-buy">Quick Buy</span>
+                    <i class="wishlist-icon far fa-heart"></i>
+                </div>
+                <h4 class="product-name">Women's Product 1</h4>
+                <p class="product-description">Brief description of the product.</p>
+                <p class="product-price">$49.99</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="item3.webp" alt="Product 3" class="product-image main-img">
+                    <img src="item_3.jpg" alt="Product 3 Hover" class="product-image hover-img">
+                    <span class="quick-buy">Quick Buy</span>
+                    <i class="wishlist-icon far fa-heart"></i>
+                </div>
+                <h4 class="product-name">Women's Product 3</h4>
+                <p class="product-description">Brief description of the product.</p>
+                <p class="product-price">$49.99</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="item4.webp" alt="Product 4" class="product-image main-img">
+                    <img src="item_4.webp" alt="Product 4 Hover" class="product-image hover-img">
+                    <span class="quick-buy">Quick Buy</span>
+                    <i class="wishlist-icon far fa-heart"></i>
+                </div>
+                <h4 class="product-name">Women's Product 4</h4>
+                <p class="product-description">Brief description of the product.</p>
+                <p class="product-price">$49.99</p>
+            </div>
+            
+            <!-- Add more product cards here for the other three products -->
+        </div>
+    </div>
+
+    <!-- Men's Section -->
+    <div class="men-products">
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="MenItem1.webp" alt="Product 1" class="product-image main-img">
+                    <img src="Menitem_1.webp" alt="Product 1 Hover" class="product-image hover-img">
+                    <span class="quick-buy">Quick Buy</span>
+                    <i class="wishlist-icon far fa-heart"></i>
+                </div>
+                <h4 class="product-name">Men's Product 1</h4>
+                <p class="product-description">Brief description of the product.</p>
+                <p class="product-price">$49.99</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="menitem2.webp" alt="Product 2" class="product-image main-img">
+                    <img src="menitem_2.jpg" alt="Product 2" Hover" class="product-image hover-img">
+                    <span class="quick-buy">Quick Buy</span>
+                    <i class="wishlist-icon far fa-heart"></i>
+                </div>
+                <h4 class="product-name">Men's Product 2</h4>
+                <p class="product-description">Brief description of the product.</p>
+                <p class="product-price">$49.99</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="menitem3.webp" alt="Product 3" class="product-image main-img">
+                    <img src="menitem_3.jpg" alt="Product 3" Hover" class="product-image hover-img">
+                    <span class="quick-buy">Quick Buy</span>
+                    <i class="wishlist-icon far fa-heart"></i>
+                </div>
+                <h4 class="product-name">Men's Product 3</h4>
+                <p class="product-description">Brief description of the product.</p>
+                <p class="product-price">$49.99</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="menitem4.webp" alt="Product 4" class="product-image main-img">
+                    <img src="menitem_4.jpg" alt="Product 4 Hover" class="product-image hover-img">
+                    <span class="quick-buy">Quick Buy</span>
+                    <i class="wishlist-icon far fa-heart"></i>
+                </div>
+                <h4 class="product-name">Men's Product 4</h4>
+                <p class="product-description">Brief description of the product.</p>
+                <p class="product-price">$49.99</p>
+            </div>
+            
+            <!-- Add more product cards here for the other three products -->
+        </div>
+        <div class="video-section">
+            <video autoplay muted loop class="product-video">
+                <source src="E-shop-MenSection.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+<div class="stay-updated-section">
+    <div class="stay-updated-content">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter to receive the latest news, exclusive offers, and updates directly to your inbox.</p>
+        <form class="subscription-form" action="#" method="post">
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</div>
+<!-- Footer Section -->
+<footer class="footer-section">
+    <div class="footer-container">
+      
+      <!-- Help & Info Dropdown -->
+      <div class="footer-dropdown">
+        <h4 class="footer-title">Help & Info</h4>
+        <ul class="footer-menu">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Delivery</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">T&Cs</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      
+      <!-- Quick Links Dropdown -->
+      <div class="footer-dropdown">
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop All</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Best Sellers</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      
+      <!-- Follow Us Section (Not Collapsible) -->
+      <div class="footer-follow-us">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      
+      <!-- Contact Dropdown -->
+      <div class="footer-dropdown">
+        <h4 class="footer-title">Contact</h4>
+        <div class="footer-contact">
+          <p> <a href="mailto:Clonerishabh@gmail.com">Clonerishabh@gmail.com</a></p>
+          <p><a href="tel:6392002134">6392002134</a></p>
+          <p> Mon-Fri 9am-6pm GMT</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="F-logo">
+            <img src="e-shop_logo.png" width="50px" height="15px"/>
+        </div>
+      <p>&copy; 2024 E-Shop . All rights reserved.</p>
+    </div>
+    
+  </footer>
+  
+
+</body>
+</html>
